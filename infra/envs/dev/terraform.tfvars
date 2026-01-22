@@ -1,0 +1,5 @@
+aws_region   = "eu-central-1"
+project_name = "eks-portfolio"
+environment  = "dev"
+vpc_cidr     = "10.0.0.0/16"
+cluster_name = "eks-portfolio-dev"
