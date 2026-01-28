@@ -3,3 +3,5 @@
 **/terraform.tfstate.*
 **/tfplan
 **/*.tfplan
+eks-portfolio.zip
+*.zip
