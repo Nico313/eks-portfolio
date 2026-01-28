@@ -39,3 +39,8 @@ variable "cluster_endpoint_public_access_cidrs" {
   description = "CIDRs allowed to reach the public EKS endpoint."
   default     = []
 }
+
+variable "enable_cluster_creator_admin_permissions" {
+  type    = bool
+  default = false
+}

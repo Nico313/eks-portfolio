@@ -12,6 +12,7 @@ module "eks" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs
 
+  enable_cluster_creator_admin_permissions = var.enable_cluster_creator_admin_permissions
 
   eks_managed_node_groups = {
     default = {
