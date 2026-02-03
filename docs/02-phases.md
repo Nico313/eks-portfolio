@@ -18,10 +18,12 @@
 - Apply namespaces/RBAC and essential add-ons
 - Validate cluster health and baseline observability
 
-## Phase 4 — Workloads and validation
-- Deploy example workloads
-- Validate ingress/networking/service discovery
-- Document expected outcomes and verification steps
+## Phase 4 — Workloads and scaling validation
+- Deploy example workload (Deployment + ClusterIP Service)
+- Validate service discovery and access via port-forward (no ingress/ALB in this phase)
+- Add metrics-server and demonstrate Horizontal Pod Autoscaler (HPA)
+- Document expected outcomes, verification steps, and cleanup (apply → demo → destroy)
+Details: implementation/phase-4-workload-hpa.md
 
 ## Phase 5 — Hardening and polish (portfolio-ready)
 - Tighten docs, troubleshooting, and reproducibility
