@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+  <diagram name="EKS Portfolio Architecture" id="0">
+    <mxGraphModel dx="946" dy="533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aws" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#E3F2FD;strokeWidth=2;" value="AWS Account" vertex="1">
+          <mxGeometry height="510" width="810" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tf" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#F3E5F5;strokeWidth=1;" value="Terraform (infra/)" vertex="1">
+          <mxGeometry height="60" width="200" x="50" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iam" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#FCE4EC;strokeWidth=1;" value="IAM Role: readonly" vertex="1">
+          <mxGeometry height="60" width="200" x="50" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ae" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#E1F5FE;strokeWidth=1;" value="EKS Access Entry&#xa;→ Kubernetes group: readonly" vertex="1">
+          <mxGeometry height="70" width="200" x="50" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="eks" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#E8F5E9;strokeWidth=2;" value="EKS Cluster" vertex="1">
+          <mxGeometry height="440" width="500" x="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ns_platform" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=1;" value="Namespace: platform" vertex="1">
+          <mxGeometry height="100" width="440" x="330" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#FFF3E0;strokeWidth=1;" value="metrics-server&#xa;(enables Metrics API for HPA)" vertex="1">
+          <mxGeometry height="30" width="200" x="350" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ns_apps" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeWidth=1;" value="Namespace: apps" vertex="1">
+          <mxGeometry height="250" width="440" x="330" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="gov" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#E0F7FA;strokeWidth=1;" value="Governance&#xa;• PSA baseline (enforce/audit/warn)&#xa;• ResourceQuota + LimitRange" vertex="1">
+          <mxGeometry height="80" width="240" x="520" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="rbac" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#E8EAF6;strokeWidth=1;" value="RBAC (namespace-scoped)&#xa;Role: readonly (get/list/watch)&#xa;RoleBinding → group readonly" vertex="1">
+          <mxGeometry height="100" width="160" x="340" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="workload" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#FFF3E0;strokeWidth=1;" value="Workload&#xa;Deployment + ClusterIP Service&#xa;HPA (CPU utilization)" vertex="1">
+          <mxGeometry height="80" width="420" x="340" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="tf" style="endArrow=block;rounded=0;strokeWidth=1;" target="eks">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="iam" style="endArrow=block;rounded=0;strokeWidth=1;" target="ae">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="ae" style="endArrow=block;rounded=0;strokeWidth=1;" target="rbac">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="metrics" style="endArrow=block;rounded=0;strokeWidth=1;entryX=0.269;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;" target="workload">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Jr7p9pEJWVoCzdYOdSMD-1" edge="1" parent="1" source="gov" style="endArrow=block;rounded=0;strokeWidth=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.71;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;" target="workload">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="320" as="sourcePoint" />
+            <mxPoint x="662" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -14,6 +14,14 @@ Portfolio repository demonstrating the build and operation of an AWS EKS platfor
 
 > Note: Some older files/folders may exist alongside the “source of truth” paths above; the docs referenced here are canonical.
 
+## Architecture
+
+![EKS Architecture](docs/architecture/eks-architecture.png)
+
+Source file (editable): `docs/architecture/eks-architecture.drawio`
+
+The diagram shows a cost-aware EKS platform built via Terraform and operated with plain Kubernetes manifests. Authentication is handled through AWS IAM, while authorization is enforced inside the cluster via RBAC using an EKS Access Entry that maps an IAM role to a namespace-scoped read-only group. Workloads run in the `apps` namespace with PSA baseline and resource governance, and autoscaling is enabled through metrics-server and HPA without requiring an ALB or Ingress controller.
+
 ## Golden path (high level)
 1. Provision AWS infrastructure and EKS cluster (`infra/`).
 2. Configure cluster access (kubeconfig).
